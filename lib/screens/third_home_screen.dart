@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:noiecovid/components/reusable_card.dart';
 import 'package:noiecovid/constants.dart';
-import 'package:noiecovid/components/bottom_button.dart';
 import 'package:noiecovid/covid_screens/screen1_3.dart';
 import 'package:noiecovid/covid_screens/screen2_3.dart';
 import 'package:noiecovid/covid_screens/screen3_3.dart';
 import 'package:noiecovid/covid_screens/screen4_3.dart';
 import 'package:noiecovid/covid_screens/screen5_3.dart';
-import 'package:noiecovid/covid_screens/learn_more_screen.dart';
 import 'package:flutter/services.dart';
 
 class ThirdHomeScreen extends StatefulWidget {
@@ -17,6 +15,7 @@ class ThirdHomeScreen extends StatefulWidget {
 }
 
 class _ThirdHomeScreenState extends State<ThirdHomeScreen> {
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
@@ -26,6 +25,7 @@ class _ThirdHomeScreenState extends State<ThirdHomeScreen> {
     );
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Row(
           children: <Widget>[
             Expanded(
@@ -292,19 +292,9 @@ class _ThirdHomeScreenState extends State<ThirdHomeScreen> {
               ],
             ),
           ),
-          BottomButton(
-            buttonTitle: 'L E A R N    M O R E',
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => CovidButtonScreen(),
-                ),
-              );
-            },
-          ),
         ],
       ),
+      
     );
   }
 }

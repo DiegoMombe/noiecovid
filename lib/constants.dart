@@ -6,26 +6,27 @@ const kInactiveCardColour = Color(0xFF111328);
 const kBottomContainerColour = Color(0xFF8A0808);
 
 const kLabelTextStyle = TextStyle(
-  fontSize: 15.0,
+  fontSize: 14.0,
   color: Colors.white,
   fontWeight: FontWeight.w500,
 );
 
 const kNumberTextStyle = TextStyle(
-  fontSize: 27.0,
+  fontSize: 24.0,
   fontWeight: FontWeight.w900,
 );
 
 const kLargeButtonTextStyle = TextStyle(
-  fontSize: 21.0,
+  fontSize: 18.0,
   fontWeight: FontWeight.w800,
+  decoration: TextDecoration.underline,
 );
 
 const kTitleTextStyle = TextStyle(
-  fontSize: 39.0,
+  fontSize: 36.0,
   fontWeight: FontWeight.bold,
 );
 
 const kBodyTextStyle = TextStyle(
-  fontSize: 22.0,
+  fontSize: 21.0,
 );

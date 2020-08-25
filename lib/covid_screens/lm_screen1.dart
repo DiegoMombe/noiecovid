@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noiecovid/constants.dart';
 import 'package:noiecovid/components/reusable_card.dart';
-import 'package:noiecovid/components/bottom_button.dart';
-
 class LearnMoreScreen1 extends StatelessWidget {
 
   @override
@@ -53,12 +51,6 @@ Altri sintomi potrebbero essere una sensazione generale di malessere, gola infia
               ),
             ),
           ),
-          BottomButton(
-            buttonTitle: 'H O M E    P A G E',
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
         ],
       ),
     );

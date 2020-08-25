@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:noiecovid/constants.dart';
 import 'package:noiecovid/components/reusable_card.dart';
-import 'package:noiecovid/components/bottom_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LicenseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('NOI E COVID'),
-      ),
+     
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -28,7 +25,7 @@ class LicenseScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '  License',
+                  '  Licenza',
                   style: kTitleTextStyle,
                 ),
               ]),
@@ -69,12 +66,6 @@ noiecovid 1.0
               ),
             ),
           ),
-          BottomButton(
-            buttonTitle: 'H O M E    P A G E',
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
         ],
       ),
     );

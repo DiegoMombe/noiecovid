@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:noiecovid/constants.dart';
 import 'package:noiecovid/components/reusable_card.dart';
-import 'package:noiecovid/components/bottom_button.dart';
 
 class LearnMoreThirdScreen3 extends StatelessWidget {
   @override
@@ -68,12 +67,6 @@ class LearnMoreThirdScreen3 extends StatelessWidget {
               ),
             ),
           ),
-          BottomButton(
-            buttonTitle: 'H O M E    P A G E',
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
         ],
       ),
     );

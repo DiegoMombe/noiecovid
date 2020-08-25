@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:noiecovid/components/reusable_card.dart';
 import 'package:noiecovid/constants.dart';
-import 'package:noiecovid/components/bottom_button.dart';
 import 'package:noiecovid/covid_screens/screen1.dart';
 import 'package:noiecovid/covid_screens/screen2.dart';
 import 'package:noiecovid/covid_screens/screen3.dart';
 import 'package:noiecovid/covid_screens/screen4.dart';
-import 'package:noiecovid/covid_screens/learn_more_screen.dart';
+import 'package:noiecovid/covid_screens/stats.dart';
 import 'package:noiecovid/screens/license_screen.dart';
 import 'package:noiecovid/screens/phone_screen.dart';
-import 'package:noiecovid/screens/second_home_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:noiecovid/screens/second_home_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -28,7 +28,221 @@ class _HomeScreenState extends State<HomeScreen> {
 
   worldWideData() async {
     http.Response response = await http.get('https://corona.lmao.ninja/v2/all');
-    
+
+    setState(() {
+      worldData = json.decode(response.body);
+      deaths = worldData['deaths'].toString();
+      cases = worldData['cases'].toString();
+      print(deaths);
+      print(cases);
+      print('kusatta');
+    });
+  }
+
+  int _selectedIndex = 0;
+  final List<Widget> _widgetOptions = <Widget>[
+    FirstHomeScreen(),
+    CountryPage(),
+    PhoneScreen(),
+    LicenseScreen(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    worldWideData();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+      [
+        DeviceOrientation.portraitUp,
+      ],
+    );
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: <Widget>[
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('NOI E COVID'),
+                ],
+              ),
+            ),
+          ],
+        ),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.location_city),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+      ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text(
+                'NOI E COVID',
+                style: kTitleTextStyle,
+              ),
+              decoration: BoxDecoration(
+                color: kActiveCardColour,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Text(
+                'LUOGHI:',
+                style: kLargeButtonTextStyle,
+              ),
+            ),
+            ListTile(
+              title: Text('Generale'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Ristoranti'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Trasporti'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Uffici'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Supermercati'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Negozi'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Parchi'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Luoghi sacri'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: GNav(
+        gap: 1,
+        activeColor: Colors.white,
+        iconSize: 24,
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 7),
+        duration: Duration(milliseconds: 800),
+        tabBackgroundColor: kBottomContainerColour,
+        tabs: [
+          GButton(
+            icon: Icons.location_city,
+            text: 'Home',
+          ),
+          GButton(
+            icon: FontAwesomeIcons.chartBar,
+            text: 'Dati',
+          ),
+          GButton(
+            icon: Icons.phone,
+            text: 'Numeri',
+          ),
+          GButton(
+            icon: Icons.settings,
+            text: 'Licenza',
+          ),
+        ],
+        selectedIndex: _selectedIndex,
+        onTabChange: _onItemTapped,
+      ),
+
+      //   ],
+      // ),
+    );
+  }
+}
+
+class FirstHomeScreen extends StatefulWidget {
+  @override
+  _FirstHomeScreenState createState() => _FirstHomeScreenState();
+}
+
+class _FirstHomeScreenState extends State<FirstHomeScreen> {
+  Map worldData;
+  String deaths;
+  String cases;
+
+  worldWideData() async {
+    http.Response response = await http.get('https://corona.lmao.ninja/v2/all');
+
     setState(() {
       worldData = json.decode(response.body);
       deaths = worldData['deaths'].toString();
@@ -53,70 +267,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     );
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: <Widget>[
-            Expanded(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  GestureDetector(
-                    child: Center(
-                      child: Hero(
-                        tag: 'appBar',
-                        child: Icon(FontAwesomeIcons.virusSlash),
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => LicenseScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text('NOI E COVID'),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  GestureDetector(
-                    child: Center(
-                      child: Hero(
-                        tag: 'phone',
-                        child: Icon(FontAwesomeIcons.phone),
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => PhoneScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
-          // ),
-        ),
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -385,17 +535,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-          ),
-          BottomButton(
-            buttonTitle: 'L E A R N    M O R E',
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => CovidButtonScreen(),
-                ),
-              );
-            },
           ),
         ],
       ),

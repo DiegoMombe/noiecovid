@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noiecovid/constants.dart';
 import 'package:noiecovid/components/reusable_card.dart';
-import 'package:noiecovid/components/bottom_button.dart';
 
 class LearnMoreScreen2 extends StatelessWidget {
   @override
@@ -47,12 +46,6 @@ class LearnMoreScreen2 extends StatelessWidget {
               ),
             ),
           ),
-          BottomButton(
-            buttonTitle: 'H O M E    P A G E',
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
         ],
       ),
     );

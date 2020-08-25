@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noiecovid/constants.dart';
 import 'package:noiecovid/components/reusable_card.dart';
-import 'package:noiecovid/components/bottom_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -12,13 +11,11 @@ class PhoneScreen extends StatefulWidget {
 
 class _PhoneScreenState extends State<PhoneScreen> {
   String dropdownValue = 'Abruzzo';
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('NOI E COVID'),
-      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -128,48 +125,51 @@ class _PhoneScreenState extends State<PhoneScreen> {
                         child: Padding(
                           padding: EdgeInsets.all(15.0),
                           child: GestureDetector(
-                            onTap: (){
-                              if (dropdownValue == 'Abruzzo'){
+                            onTap: () {
+                              if (dropdownValue == 'Abruzzo') {
                                 launch('tel:800169326');
-                              } else if (dropdownValue == 'Basilicata'){
+                              } else if (dropdownValue == 'Basilicata') {
                                 launch('tel:800996688');
-                              } else if (dropdownValue == 'Calabria'){
+                              } else if (dropdownValue == 'Calabria') {
                                 launch('tel:800767676');
-                              }else if (dropdownValue == 'Campania'){
+                              } else if (dropdownValue == 'Campania') {
                                 launch('tel:800909699');
-                              }else if (dropdownValue == 'Emilia-Romagna'){
+                              } else if (dropdownValue == 'Emilia-Romagna') {
                                 launch('tel:800033033');
-                              }else if (dropdownValue == 'Friuli Venezia Giulia'){
+                              } else if (dropdownValue ==
+                                  'Friuli Venezia Giulia') {
                                 launch('tel:800500300');
-                              }else if (dropdownValue == 'Lazio'){
+                              } else if (dropdownValue == 'Lazio') {
                                 launch('tel:800118800');
-                              }else if (dropdownValue == 'Liguria'){
+                              } else if (dropdownValue == 'Liguria') {
                                 launch('tel:800938883');
-                              }else if (dropdownValue == 'Lombardia'){
+                              } else if (dropdownValue == 'Lombardia') {
                                 launch('tel:800894545');
-                              }else if (dropdownValue == 'Marche'){
+                              } else if (dropdownValue == 'Marche') {
                                 launch('tel:800936677');
-                              }else if (dropdownValue == 'Molise'){
+                              } else if (dropdownValue == 'Molise') {
                                 launch('tel:0874313000');
-                              }else if (dropdownValue == 'Piemonte'){
+                              } else if (dropdownValue == 'Piemonte') {
                                 launch('tel:800192020');
-                              }else if (dropdownValue == 'Puglia'){
+                              } else if (dropdownValue == 'Puglia') {
                                 launch('tel:800713931');
-                              }else if (dropdownValue == 'Sardegna'){
+                              } else if (dropdownValue == 'Sardegna') {
                                 launch('tel:800311377');
-                              }else if (dropdownValue == 'Sicilia'){
+                              } else if (dropdownValue == 'Sicilia') {
                                 launch('tel:800458787');
-                              }else if (dropdownValue == 'Toscana'){
+                              } else if (dropdownValue == 'Toscana') {
                                 launch('tel:800556060');
-                              }else if (dropdownValue == 'Provincia di Bolzano'){
+                              } else if (dropdownValue ==
+                                  'Provincia di Bolzano') {
                                 launch('tel:800751751');
-                              }else if (dropdownValue == 'Provincia di Trento'){
+                              } else if (dropdownValue ==
+                                  'Provincia di Trento') {
                                 launch('tel:800867388');
-                              }else if (dropdownValue == 'Umbria'){
+                              } else if (dropdownValue == 'Umbria') {
                                 launch('tel:800636363');
-                              }else if (dropdownValue == 'Valle d\'Aosta'){
+                              } else if (dropdownValue == 'Valle d\'Aosta') {
                                 launch('tel:800122121');
-                              }else if (dropdownValue == 'Veneto'){
+                              } else if (dropdownValue == 'Veneto') {
                                 launch('tel:800462340');
                               }
                             },
@@ -186,12 +186,6 @@ class _PhoneScreenState extends State<PhoneScreen> {
               ),
             ),
           ),
-          BottomButton(
-            buttonTitle: 'H O M E    P A G E',
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
         ],
       ),
     );

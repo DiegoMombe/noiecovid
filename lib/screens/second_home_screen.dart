@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:noiecovid/components/reusable_card.dart';
 import 'package:noiecovid/constants.dart';
-import 'package:noiecovid/components/bottom_button.dart';
 import 'package:noiecovid/covid_screens/screen1_2.dart';
 import 'package:noiecovid/covid_screens/screen2_2.dart';
 import 'package:noiecovid/covid_screens/screen3_2.dart';
 import 'package:noiecovid/covid_screens/screen4_2.dart';
 import 'package:noiecovid/covid_screens/screen5_2.dart';
-import 'package:noiecovid/covid_screens/learn_more_screen.dart';
 import 'package:noiecovid/screens/third_home_screen.dart';
 import 'package:flutter/services.dart';
 
@@ -27,6 +25,7 @@ class _SecondHomeScreenState extends State<SecondHomeScreen> {
     );
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Row(
           children: <Widget>[
             Expanded(
@@ -315,17 +314,7 @@ class _SecondHomeScreenState extends State<SecondHomeScreen> {
               ],
             ),
           ),
-          BottomButton(
-            buttonTitle: 'L E A R N    M O R E',
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => CovidButtonScreen(),
-                ),
-              );
-            },
-          ),
+          
         ],
       ),
     );

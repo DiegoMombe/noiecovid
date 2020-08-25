@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noiecovid/constants.dart';
 import 'package:noiecovid/components/reusable_card.dart';
-import 'package:noiecovid/components/bottom_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CovidSecondScreen2 extends StatelessWidget {
@@ -54,12 +53,6 @@ class CovidSecondScreen2 extends StatelessWidget {
               ),
             ),
           ),
-          BottomButton(
-            buttonTitle: 'H O M E    P A G E',
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
         ],
       ),
     );

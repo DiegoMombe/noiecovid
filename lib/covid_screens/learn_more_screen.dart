@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noiecovid/constants.dart';
 import 'package:noiecovid/components/reusable_card.dart';
-import 'package:noiecovid/components/bottom_button.dart';
 import 'package:noiecovid/covid_screens/lm_screen1.dart';
 import 'package:noiecovid/covid_screens/lm_screen2.dart';
 import 'package:noiecovid/covid_screens/lm_screen3.dart';
@@ -121,12 +120,6 @@ class CovidButtonScreen extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-          BottomButton(
-            buttonTitle: 'H O M E    P A G E',
-            onTap: () {
-              Navigator.pop(context);
-            },
           ),
         ],
       ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:noiecovid/constants.dart';
 import 'package:noiecovid/components/reusable_card.dart';
-import 'package:noiecovid/components/bottom_button.dart';
 import 'package:noiecovid/covid_screens/lm_screen3_2.dart';
 
 class LearnMoreScreen3 extends StatelessWidget {
@@ -79,12 +78,6 @@ class LearnMoreScreen3 extends StatelessWidget {
               ),
             ),
           ),
-          BottomButton(
-            buttonTitle: 'H O M E    P A G E',
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
         ],
       ),
     );

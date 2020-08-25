@@ -42,7 +42,6 @@ class _CountryPageState extends State<CountryPage> {
             },
           )
         ],
-        title: Text('NOI E COVID'),
       ),
       body: countryData == null
           ? Center(
