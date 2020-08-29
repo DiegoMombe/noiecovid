@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:noiecovid/constants.dart';
 import 'package:noiecovid/components/reusable_card.dart';
 import 'package:noiecovid/components/search.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class CountryPage extends StatefulWidget {
   @override
@@ -45,7 +46,10 @@ class _CountryPageState extends State<CountryPage> {
       ),
       body: countryData == null
           ? Center(
-              child: CircularProgressIndicator(),
+              child: SpinKitCircle(
+                color: Colors.white,
+                size: 50.0,
+              ),
             )
           : ListView.builder(
               itemBuilder: (context, index) {
@@ -54,8 +58,8 @@ class _CountryPageState extends State<CountryPage> {
                     colour: kActiveCardColour,
                     cardChild: Container(
                       height: 130,
-                      margin: EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 10),
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                       child: Row(
                         children: <Widget>[
                           Container(
@@ -81,12 +85,9 @@ class _CountryPageState extends State<CountryPage> {
                             child: Container(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment:
-                                    CrossAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
-                                  Text(
-                                      countryData[index]['deaths']
-                                          .toString(),
+                                  Text(countryData[index]['deaths'].toString(),
                                       style: kNumberTextStyle),
                                   Text(
                                     'MORTI',

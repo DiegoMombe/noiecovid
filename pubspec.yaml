@@ -33,10 +33,7 @@ dependencies:
   http: ^0.12.2
   url_launcher: ^5.5.0
   google_nav_bar: ^3.0.0
-  introduction_screen: ^1.0.9
-  google_fonts: ^1.1.0
-  shared_preferences: ^0.5.10
-  auto_size_text: ^2.1.0
+  flutter_spinkit: ^4.1.2+1
 
 
 flutter_icons:
@@ -63,6 +60,7 @@ flutter:
   assets:
     - images/
     - backgrounds/
+    - icon/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

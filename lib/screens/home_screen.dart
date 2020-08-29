@@ -1,5 +1,4 @@
 import 'dart:convert';
-//import 'package:noiecovid/covid_screens/stats.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:noiecovid/components/reusable_card.dart';
@@ -9,6 +8,11 @@ import 'package:noiecovid/covid_screens/screen2.dart';
 import 'package:noiecovid/covid_screens/screen3.dart';
 import 'package:noiecovid/covid_screens/screen4.dart';
 import 'package:noiecovid/covid_screens/stats.dart';
+import 'package:noiecovid/drawer_screens/office_screen.dart';
+import 'package:noiecovid/drawer_screens/park_screen.dart';
+import 'package:noiecovid/drawer_screens/restaurant_screen.dart';
+import 'package:noiecovid/drawer_screens/shop_screen.dart';
+import 'package:noiecovid/drawer_screens/transport_screen.dart';
 import 'package:noiecovid/screens/license_screen.dart';
 import 'package:noiecovid/screens/phone_screen.dart';
 import 'package:flutter/services.dart';
@@ -33,9 +37,6 @@ class _HomeScreenState extends State<HomeScreen> {
       worldData = json.decode(response.body);
       deaths = worldData['deaths'].toString();
       cases = worldData['cases'].toString();
-      print(deaths);
-      print(cases);
-      print('kusatta');
     });
   }
 
@@ -96,103 +97,113 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text(
-                'NOI E COVID',
-                style: kTitleTextStyle,
+      drawer: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor:
+              kActiveCardColour, //This will change the drawer background to blue.
+          //other styles
+        ),
+        child: Drawer(
+          // Add a ListView to the drawer. This ensures the user can scroll
+          // through the options in the drawer if there isn't enough vertical
+          // space to fit everything.
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text(
+                  'NOI E COVID',
+                  style: kTitleTextStyle,
+                ),
+                decoration: BoxDecoration(
+                  color: kInactiveCardColour,
+                ),
               ),
-              decoration: BoxDecoration(
-                color: kActiveCardColour,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 15.0, vertical: 12.0),
+                child: Center(
+                  child: Text(
+                    'LUOGHI',
+                    style: kLargeButtonTextStyle,
+                  ),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: Text(
-                'LUOGHI:',
-                style: kLargeButtonTextStyle,
+              ListTile(
+                title: Text('Generale'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
-            ),
-            ListTile(
-              title: Text('Generale'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Ristoranti'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Trasporti'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Uffici'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Supermercati'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Negozi'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Parchi'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Luoghi sacri'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
-              },
-            ),
-          ],
+              ListTile(
+                title: Text('Ristoranti'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RestaurantScreen(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: Text('Trasporti'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TransportScreen(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: Text('Uffici'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => OfficeScreen(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: Text('Negozi'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ShopScreen(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: Text('Bar'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RestaurantScreen(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: Text('Parchi'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ParkScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: GNav(
@@ -373,7 +384,7 @@ class _FirstHomeScreenState extends State<FirstHomeScreen> {
                       //     builder: (BuildContext context) => CountryPage(),
                       //   ),
                       // );
-                      print('bdp');
+                      // print('bdp');
                     },
                     colour: kActiveCardColour,
                     cardChild: Column(
